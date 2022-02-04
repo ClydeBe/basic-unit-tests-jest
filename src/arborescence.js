@@ -61,12 +61,41 @@ const getRelativePath = (tree, id1, id2) => {
   let ancestor = getLowerCommonAncestor(tree, id1, id2);
   let path1 = getAbsolutePath(tree, id1);
   let path2 = getAbsolutePath(tree, id2);
-  let pathAncestor = getAbsolutePath(tree, ancestor.id);
-  let path1ToAncestor = path1.split("/").slice(path1.split("/").indexOf(pathAncestor));
-  let path2ToAncestor = path2.split("/").slice(path2.split("/").indexOf(pathAncestor));
-  let relativePath = path1ToAncestor.concat(path2ToAncestor.slice(1));
-  return relativePath.join("/");
+  if (ancestor === elt1.name)
+    return path2.substring(path2.indexOf(ancestor) + ancestor.length);
+  if (ancestor === elt2.name)
+    return path1.substring(path1.indexOf(ancestor) + ancestor.length);
+  let pathArray = path1.split("/");
+  let path = "/..";
+  for (let i = 0; i < pathArray.length; i++) {
+    if (pathArray[i] === ancestor)
+      break;
+    path += "/..";
+  }
+  path += path2.substring(path2.indexOf(ancestor) + ancestor.length);
+  return path;
 }
+
+// const treeAsArray = [
+//   { id: 0, parent: -1, name: "root" },
+//   { id: 1, parent: 0, name: "etc" },
+//   { id: 2, parent: 0, name: "bin" },
+//   { id: 3, parent: 0, name: "var" },
+//   { id: 4, parent: 1, name: "One" },
+//   { id: 5, parent: 1, name: "Lone" },
+//   { id: 6, parent: 2, name: "Coder" },
+//   { id: 7, parent: 2, name: "NoName" },
+//   { id: 8, parent: 2, name: "Child of 2" },
+//   { id: 9, parent: 3, name: "NoName" },
+//   { id: 10, parent: 4, name: "Child of 4" },
+//   { id: 11, parent: 5, name: "Child of 5" },
+//   { id: 12, parent: 6, name: "Child of 6" },
+// ];
+
+// let tree = createTree(treeAsArray);
+// // console.log(tree);
+// console.log(getRelativePath(tree, 7, 1));
+
 
 
 module.exports = { createTree, getAbsolutePath, getLowerCommonAncestor, getRelativePath };
