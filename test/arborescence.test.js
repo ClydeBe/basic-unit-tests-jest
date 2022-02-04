@@ -87,30 +87,30 @@ test('getLowerCommonAncestor should return root', () => {
   expect(getLowerCommonAncestor(tree, 2, 9)).toBe("root");
 });
 
-test('getRelativePath should throw Tree cannot be null or undefined', () => {
-  expect(() => getRelativePath(null, 1, 2)).toThrowError("Tree cannot be null or undefined");
-});
+// test('getRelativePath should throw Tree cannot be null or undefined', () => {
+//   expect(() => getRelativePath(null, 1, 2)).toThrowError("Tree cannot be null or undefined");
+// });
 
-test('getRelativePath should throw ids cannot be null or undefined', () => {
-  expect(() => getRelativePath(tree, undefined, 2)).toThrowError("ids cannot be null or undefined");
-});
+// test('getRelativePath should throw ids cannot be null or undefined', () => {
+//   expect(() => getRelativePath(tree, undefined, 2)).toThrowError("ids cannot be null or undefined");
+// });
 
-test('getRelativePath should throw ids cannot be null or undefined', () => {
-  expect(() => getRelativePath(tree, 1, undefined)).toThrowError("ids cannot be null or undefined");
-});
+// test('getRelativePath should throw ids cannot be null or undefined', () => {
+//   expect(() => getRelativePath(tree, 1, undefined)).toThrowError("ids cannot be null or undefined");
+// });
 
-test('getRelativePath should throw ids cannot be null or undefined', () => {
-  expect(() => getRelativePath(tree, undefined, undefined)).toThrowError("ids cannot be null or undefined");
-});
+// test('getRelativePath should throw ids cannot be null or undefined', () => {
+//   expect(() => getRelativePath(tree, undefined, undefined)).toThrowError("ids cannot be null or undefined");
+// });
 
-test('getRelativePath should return root', () => {
-  expect(getRelativePath(tree, 1, 2)).toBe("root");
-});
+// test('getRelativePath should return root', () => {
+//   expect(getRelativePath(tree, 1, 2)).toBe("root");
+// });
 
-test('getRelativePath should return etc', () => {
-  expect(getRelativePath(tree, 1, 4)).toBe("etc");
-});
+// test('getRelativePath should return etc', () => {
+//   expect(getRelativePath(tree, 1, 4)).toBe("etc");
+// });
 
-test('getRelativePath should return root/etc', () => {
-  expect(getRelativePath(tree, 2, 10)).toBe("root/etc");
-});
+// test('getRelativePath should return root/etc', () => {
+//   expect(getRelativePath(tree, 2, 10)).toBe("root/etc");
+// });
